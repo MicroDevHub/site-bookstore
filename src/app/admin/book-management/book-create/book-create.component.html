@@ -1,0 +1,93 @@
+<div
+  class="example-container"
+  *ngIf="(editMode && book) || (!editMode && categories.length > 0)"
+>
+  <div class="form-container">
+    <h2>{{ editMode ? "Edit Book" : "Create new Book" }}</h2>
+    <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+      <mat-form-field class="form-field">
+        <mat-label>Title</mat-label>
+        <input
+          matInput
+          placeholder="Please input book title"
+          id="title"
+          formControlName="title"
+        />
+      </mat-form-field>
+      <mat-form-field class="form-field">
+        <mat-label>Price</mat-label>
+        <input
+          matInput
+          placeholder="Please input book price"
+          id="price"
+          formControlName="price"
+        />
+      </mat-form-field>
+      <mat-form-field class="form-field">
+        <mat-label>Quantity</mat-label>
+        <input
+          matInput
+          placeholder="Please input book quantity"
+          id="quantity"
+          formControlName="quantity"
+        />
+      </mat-form-field>
+      <mat-form-field class="form-field">
+        <mat-label>Author</mat-label>
+        <input
+          matInput
+          placeholder="Please input book author"
+          id="author"
+          formControlName="author"
+        />
+      </mat-form-field>
+      <mat-form-field class="form-field">
+        <mat-label>Description</mat-label>
+        <textarea
+          matInput
+          placeholder="Please input book description"
+          id="description"
+          formControlName="description"
+        ></textarea>
+      </mat-form-field>
+      <mat-form-field class="form-field">
+        <mat-label>Select Category</mat-label>
+        <mat-select formControlName="category">
+          <mat-option *ngFor="let category of categories" [value]="category.id">{{category.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="form-field">
+        <mat-label>Image</mat-label>
+        <input
+          matInput
+          placeholder="Please input book image"
+          id="image"
+          formControlName="image"
+        />
+      </mat-form-field>
+      <div style="display:flex; justify-content: center;">
+        <div class="col-md-5" style="margin: 0 auto">
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="!bookForm.valid"
+            class="btn btn-success w-100"
+          >
+            {{ editMode ? "Save" : "Create" }}
+          </button>
+        </div>
+        <div class="col-md-5" style="margin: 0 auto">
+          <button
+            mat-raised-button
+            type="submit"
+            class="btn btn-secondary w-100"
+            (click)="onCancel()"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,5 +1,3 @@
-import { CategoryModel } from '../category/category.model';
-
 export interface IBookCreate {
   title: string;
   image: string;
@@ -7,5 +5,5 @@ export interface IBookCreate {
   price: number;
   description: string;
   author: string;
-  category: CategoryModel;
+  categoryId: number;
 }

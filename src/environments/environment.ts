@@ -12,7 +12,7 @@ export const environment = {
     register: baseUrl + '/api/users/register',
   },
   book: {
-    get: baseUrl + '/books?limit={limit}&page={page}&search={search}',
+    get: baseUrl + '/books?limit={limit}&page={page}&sortOrder={sortOrder}&sortColumn={sortColumn}&search={search}',
     getDetail: baseUrl + '/books/{id}',
     getByCategory: baseUrl + '/books?categoryId={categoryId}',
     createBook: baseUrl + '/books',

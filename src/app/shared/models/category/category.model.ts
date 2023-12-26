@@ -1,9 +1,9 @@
 export class CategoryModel {
-  _id: string;
+  id: number;
   name: string;
 
   constructor(data: CategoryModel) {
-    this._id = data._id;
+    this.id = data.id;
     this.name = data.name;
   }
 }

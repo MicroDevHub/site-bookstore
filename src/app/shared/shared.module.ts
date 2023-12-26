@@ -1,6 +1,7 @@
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -26,15 +27,18 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import { BrowserModule } from '@angular/platform-browser';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle } from '@angular/material/dialog';
+import { MatTooltipModule } from '@angular/material/tooltip';
 // import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 // import { AuthGuard } from './services/auth/auth.guard';
 // import { MyStorageService } from './services/auth/storage.service';
 // import { AuthInterceptor } from 'angular-auth-oidc-client';
 
 @NgModule({
-  // declarations: [HeaderComponent, FooterComponent],
   imports: [
+    ConfirmationDialogComponent,
     RouterModule,
     CommonModule,
     MatSidenavModule,
@@ -57,9 +61,14 @@ import { BrowserModule } from '@angular/platform-browser';
     HttpClientModule,
     MatPaginatorModule,
     MatSortModule,
-    // HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
-    //   passThruUnknownUrl: true,
-    // }),
+    MatFormFieldModule,
+    FormsModule,
+    MatSelectModule,
+    MatDialogActions,
+    MatDialogClose,
+    MatDialogTitle,
+    MatDialogContent,
+    MatTooltipModule
   ],
   providers: [
     BookService,
@@ -71,6 +80,7 @@ import { BrowserModule } from '@angular/platform-browser';
   exports: [
     // HeaderComponent,
     // FooterComponent,
+    ConfirmationDialogComponent,
     CommonModule,
     MatSidenavModule,
     MatGridListModule,
@@ -91,6 +101,15 @@ import { BrowserModule } from '@angular/platform-browser';
     ReactiveFormsModule,
     MatPaginatorModule,
     MatSortModule,
+    MatFormFieldModule,
+    FormsModule,
+    RouterModule,
+    MatSelectModule,
+    MatDialogActions,
+    MatDialogClose,
+    MatDialogTitle,
+    MatDialogContent,
+    MatTooltipModule
   ],
 })
 export class SharedModule {}

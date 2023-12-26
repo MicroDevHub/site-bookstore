@@ -9,7 +9,7 @@ export class BookModel {
   description: string;
   author: string;
   category: CategoryModel;
-  isDelete: Boolean;
+  isDelete: boolean;
 
   constructor(data: BookModel) {
     this.id = data.id;

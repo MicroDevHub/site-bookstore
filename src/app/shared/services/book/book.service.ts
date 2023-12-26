@@ -13,12 +13,16 @@ export class BookService {
   getBook(
     limit: number,
     page: number,
-    search?: String
+    sortColumn?: string,
+    sortOrder?: string,
+    search?: string
   ): Observable<BookGetResponse> {
     const url = environment.book.get
       .replace('{limit}', String(limit))
       .replace('{page}', String(page))
-      .replace('{search}', String(search));
+      .replace('{sortColumn}', sortColumn ? String(sortColumn) : 'id')
+      .replace('{sortOrder}', sortOrder ? String(sortOrder) : 'asc')
+      .replace('{search}', search ? String(search) : '');
     return this.httpClient.get<BookGetResponse>(url);
   }
 
@@ -36,40 +40,21 @@ export class BookService {
   }
 
   createBook(bookCreate: IBookCreate) {
-    const book = {
-      title: bookCreate.title,
-      image: bookCreate.image,
-      quantity: bookCreate.quantity,
-      price: bookCreate.price,
-      description: bookCreate.description,
-      author: bookCreate.author,
-      category: bookCreate.category,
-    };
-
     return this.httpClient.post<IBookCreate>(environment.book.createBook, {
-      ...book,
+      ...bookCreate,
     });
   }
 
   updateBook(id: string, bookUpdate: IBookCreate) {
-    const book = {
-      title: bookUpdate.title,
-      image: bookUpdate.image,
-      quantity: bookUpdate.quantity.toString(),
-      price: bookUpdate.price.toString(),
-      description: bookUpdate.description,
-      author: bookUpdate.author,
-      category: bookUpdate.category,
-    };
-    const url = environment.book.deleteBook.replace('{id}', id);
+    const url = environment.book.editBook.replace('{id}', id);
 
     return this.httpClient.put<IBookCreate>(url, {
-      ...book,
+      ...bookUpdate,
     });
   }
 
-  delete(id: string) {
-    const url = environment.book.deleteBook.replace('{id}', id);
+  removeBook(id: number) {
+    const url = environment.book.deleteBook.replace('{id}', String(id));
     return this.httpClient.delete<BookModel>(url);
   }
 }
