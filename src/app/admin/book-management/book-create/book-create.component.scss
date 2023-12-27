@@ -1,5 +1,5 @@
 
-.example-container{
+.container{
   margin: 0 auto;
 }
 
@@ -11,4 +11,14 @@
 
 .form-field{
   display: block
+}
+
+.btn-group {
+  display:flex;
+  justify-content: center;
+  margin-bottom: 20px;
+
+  div {
+    margin: 0 auto;
+  }
 }
